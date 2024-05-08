@@ -86,12 +86,12 @@ app.post('/scores', (req, res) => {
     console.log(respons);
     //respons = respons[0];
     var scores = [];
-    var economy = 0;
-    var law = 0;
-    var central = 0;
-    var tradition = 0;
-    var minority = 0;
-    var nation = 0;
+    var e1 = 0;
+    var l1 = 0;
+    var c1 = 0;
+    var t1 = 0;
+    var m1 = 0;
+    var n1 = 0;
     for (var i = 0; i < 23; i++) {
         if (respons[i].includes('undefined')) {
             //Cut the word 'undefined' from the string
@@ -99,15 +99,15 @@ app.post('/scores', (req, res) => {
         }
         if (respons[i] != ',') {
             if (i == 4 || i == 5 || i == 8 || i == 10 || i == 11 || i == 13 || i == 14 || i == 16 || i == 18 || i == 22) {
-                economy += Number(respons[i]);
+                e1 += Number(respons[i]);
             }
             else {
-                economy += 100 - Number(respons[i]);
+                e1 += 100 - Number(respons[i]);
             }
         }
         
     }
-    scores.push(economy/23);
+    scores.push(e1/23);
     for (var i = 23; i < 38; i++) {
         if (respons[i].includes('undefined')) {
             //Cut the word 'undefined' from the string
@@ -115,15 +115,15 @@ app.post('/scores', (req, res) => {
         }
         if (respons[i] != ',') {
             if (i == 23 || i == 27 || i == 29 || i == 30 || i == 33) {
-                law += 100 - Number(respons[i]);
+                l1 += 100 - Number(respons[i]);
             }
             else {
-                law += Number(respons[i]);
+                l1 += Number(respons[i]);
             }
         }
         
     }
-    scores.push(law/15);
+    scores.push(l1/15);
     for (var i = 38; i < 48; i++) {
         if (respons[i].includes('undefined')) {
             //Cut the word 'undefined' from the string
@@ -131,14 +131,14 @@ app.post('/scores', (req, res) => {
         }
         if (respons[i] != ',') {
             if (i == 38 || i == 39 || i == 43 || i == 45 || i == 46 || i == 47) {
-                central += 100 - Number(respons[i]);
+                c1 += 100 - Number(respons[i]);
             }
             else {
-                central += Number(respons[i]);
+                c1 += Number(respons[i]);
             }
         }
     }
-    scores.push(central/10);
+    scores.push(c1/10);
     for (var i = 48; i < 56; i++) {
         if (respons[i].includes('undefined')) {
             //Cut the word 'undefined' from the string
@@ -146,15 +146,15 @@ app.post('/scores', (req, res) => {
         }
         if (respons[i] != ',') {
             if (i == 50 || i == 53) {
-                tradition += 100 - Number(respons[i]);
+                t1 += 100 - Number(respons[i]);
             }
             else {
-                tradition += Number(respons[i]);
+                t1 += Number(respons[i]);
             }
             
         }
     }
-    scores.push(tradition/8);
+    scores.push(t1/8);
     for (var i = 56; i < 64; i++) {
         if (respons[i].includes('undefined')) {
             //Cut the word 'undefined' from the string
@@ -162,15 +162,15 @@ app.post('/scores', (req, res) => {
         }
         if (respons[i] != ',') {
             if (i == 56 || i == 57 || i == 58 || i == 61 || i == 62) {
-                minority += 100 - Number(respons[i]);
+                m1 += 100 - Number(respons[i]);
             }
             else {
-                minority += Number(respons[i]);
+                m1 += Number(respons[i]);
             }
             
         }
     }
-    scores.push(minority/8);
+    scores.push(m1/8);
     for (var i = 64; i < 80; i++) {
         if (respons[i].includes('undefined')) {
             //Cut the word 'undefined' from the string
@@ -178,22 +178,22 @@ app.post('/scores', (req, res) => {
         }
         if (respons[i] != ',') {
             if (i == 64 || i == 66 || i == 67 || i == 70 || i == 71 || i == 73 || i == 75 || i == 77 || i == 78 || i == 79) {
-                nation += 100 - Number(respons[i]);
+                n1 += 100 - Number(respons[i]);
             }
             else {
-                nation += Number(respons[i]);
+                n1 += Number(respons[i]);
             }
             
         }
     }
-    scores.push(nation/16);
+    scores.push(n1/16);
     toBeSent = {
-        economy: scores[0],
-        law: scores[1],
-        central: scores[2],
-        tradition: scores[3],
-        minority: scores[4],
-        nation: scores[5]
+        e1: scores[0],
+        l1: scores[1],
+        c1: scores[2],
+        t1: scores[3],
+        m1: scores[4],
+        n1: scores[5]
     }
     toBeSent = JSON.stringify(toBeSent);
     console.log(scores);
